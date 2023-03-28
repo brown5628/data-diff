@@ -137,7 +137,8 @@ def _get_diff_vars(
     # need to construct the prod schema as <prod_target_schema>_<custom_schema>
     # https://docs.getdbt.com/docs/build/custom-schemas
     if custom_schemas and model.config.schema_:
-        prod_schema = prod_schema + "_" + model.config.schema_
+        prod_schema = model.config.schema_
+        # prod_schema = prod_schema + "_" + model.config.schema_
 
     if dbt_parser.requires_upper:
         dev_qualified_list = [x.upper() for x in [dev_database, dev_schema, model.alias]]
